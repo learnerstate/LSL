@@ -1,0 +1,32 @@
+name: Validate examples
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install ajv-cli and ajv-formats
+        run: npm install --no-save ajv-cli ajv-formats
+
+      - name: Validate every example against the Core schema
+        run: |
+          set -e
+          for f in examples/*.yml examples/*.json; do
+            [ -e "$f" ] || continue
+            echo "::group::$f"
+            npx ajv validate \
+              -s schema/lsl-core.schema.json \
+              -d "$f" \
+              --spec=draft2020 \
+              -c ajv-formats
+            echo "::endgroup::"
+          done

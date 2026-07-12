@@ -1,0 +1,73 @@
+# Federation-layer example: a canonical (aggregated) document.
+# Two platforms independently assessed this learner; an aggregator merged their
+# claims. Per SPEC.md §4.3: merges are represented (the `from` blocks), never
+# overwritten; origin signatures are verified before citing; and because this
+# document carries `cannot_yet`/`misconceptions`, it may only be served at
+# `tutor` disclosure scope or above.
+#
+# NOTE: `proof_value` below is a placeholder, not a real signature. A real
+# document signs the canonical form per W3C Data Integrity (eddsa-jcs-2022).
+
+lsl: "1.0"
+learner: "lrn-8x2ka"
+updated: 2026-07-10
+subject: "Data Structures & Algorithms"
+
+document_type: canonical
+issuer: "https://aggregator.example"
+learner_aliases: ["did:web:sarah.dev"]
+disclosure: tutor
+
+compiled_by: { name: "example-aggregator", version: "0.4.0" }
+sources:
+  - "https://leetcode.com"
+  - "https://coursera.org"
+
+proof:
+  type: "DataIntegrityProof"
+  cryptosuite: "eddsa-jcs-2022"
+  verification_method: "https://aggregator.example/.well-known/lsl-keys#key-2026"
+  proof_value: "z58DAdFfa9SkqZMVPxAQpic7ndSayn1PzZs6ZjWp1CktyGesjuTSwRdo"  # placeholder
+
+goals:
+  - objective: "Interview-ready in DSA"
+    by: 2026-09-01
+
+concepts:
+  - name: "Recursion"
+    id: "https://leetcode.com/concepts/cs/dsa/recursion"
+    mastery: 0.82            # pooled estimate across origins
+    confidence: high
+    last_seen: 2026-07-01
+    can:
+      - "Designs recursive solutions with correct base cases for novel problems"
+    cannot_yet: []
+    misconceptions: []
+    from:                    # per-origin claims survive the merge
+      - issuer: "https://leetcode.com"
+        mastery: 0.85
+        provenance: { method: "elo", n_observations: 19 }
+      - issuer: "https://coursera.org"
+        mastery: 0.78
+        provenance: { method: "quiz-average", n_observations: 12 }
+
+  - name: "Memoization"
+    id: "https://leetcode.com/concepts/cs/dsa/memoization"
+    mastery: 0.68
+    confidence: med
+    last_seen: 2026-07-08
+    can:
+      - "Writes a correct top-down memoized solution for standard problems"
+    cannot_yet:
+      - "Analyzes space complexity tradeoffs of memoized vs tabulated solutions"
+    misconceptions:
+      - "Believes memoization always reduces time complexity to O(n)"
+    from:
+      - issuer: "https://leetcode.com"
+        mastery: 0.68
+        provenance: { method: "bkt-v2", n_observations: 14 }
+
+next:
+  learn: ["DP Tabulation"]
+  review: []
+  blocked: {}

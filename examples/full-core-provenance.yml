@@ -1,0 +1,64 @@
+# Complete example document (Core + light Provenance).
+# This is the document from SPEC.md §7 — the spec's acceptance test:
+# handed raw to any competent LLM with the instruction "tutor this person,"
+# it should produce a well-targeted first session.
+
+lsl: "1.0"
+learner: "lrn-8x2ka"
+updated: 2026-07-08
+subject: "Data Structures & Algorithms"
+compiled_by: { name: "leetcode-lsl-exporter", version: "1.2.0" }
+sources: ["https://lrs.leetcode.com/xapi/"]
+
+goals:
+  - objective: "Interview-ready in DSA"
+    by: 2026-09-01
+
+concepts:
+  - name: "Recursion"
+    id: "https://leetcode.com/concepts/cs/dsa/recursion"
+    mastery: 0.85
+    confidence: high
+    last_seen: 2026-05-30
+    trend: stable
+    can:
+      - "Designs recursive solutions with correct base cases for novel problems"
+    cannot_yet: []
+    misconceptions: []
+
+  - name: "Linked Lists"
+    id: "https://leetcode.com/concepts/cs/dsa/linked-lists"
+    mastery: 0.74
+    confidence: high
+    last_seen: 2026-06-28
+    trend: stable
+    can:
+      - "Explains node/pointer structure and traverses correctly"
+      - "Implements insertion and deletion at any position"
+    cannot_yet:
+      - "Handles empty-list and single-node edge cases without prompting"
+    misconceptions: []
+
+  - name: "Memoization"
+    id: "https://leetcode.com/concepts/cs/dsa/memoization"
+    mastery: 0.68
+    confidence: med
+    last_seen: 2026-07-08
+    trend: rising
+    can:
+      - "Writes a correct top-down memoized solution for standard problems"
+      - "Converts a memoized solution to bottom-up tabulation with guidance"
+    cannot_yet:
+      - "Analyzes space complexity tradeoffs of memoized vs tabulated solutions"
+    misconceptions:
+      - "Believes memoization always reduces time complexity to O(n)"
+
+teaches_best:
+  - "Worked examples before open-ended practice"
+  - "Sessions under 35 minutes"
+
+next:
+  learn: ["DP Tabulation"]
+  review: ["Linked Lists"]
+  blocked:
+    "DP on Graphs": "needs DP Tabulation"

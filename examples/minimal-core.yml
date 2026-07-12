@@ -1,0 +1,16 @@
+# The smallest valid LSL document.
+# Core layer only. Empty lists are valid — thin-but-honest beats rich-but-fabricated.
+
+lsl: "1.0"
+learner: "lrn-3f9qm"
+updated: 2026-07-12
+
+concepts:
+  - name: "CSS Flexbox"
+    mastery: 0.55
+    confidence: low
+    last_seen: 2026-07-10
+    can:
+      - "Centers items in a single-row container"
+    cannot_yet: []
+    misconceptions: []

@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learnerstate.org/schema/v1/lsl-core.schema.json",
+  "title": "LSL Core — Learner State Layer",
+  "description": "Validates the Core layer of an LSL document (SPEC.md §3). Both serializations (YAML and JSON) use the same snake_case keys, so a YAML document validates identically after parsing. Extension fields (Provenance, Relationships, Federation) are permitted and ignored per the additive-extensibility principle (§2.8): unknown fields are never errors. One Provenance-compatibility rule lives here by necessity: `can`/`cannot_yet`/`misconceptions` items may be either bare strings (Core) or objects with `text` + optional `evidence` (Provenance) — consumers MUST accept both (§4.1).",
+  "type": "object",
+  "required": [
+    "lsl",
+    "learner",
+    "updated",
+    "concepts"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "lsl": {
+      "type": "string",
+      "description": "Spec version. REQUIRED.",
+      "pattern": "^1\\.0$"
+    },
+    "learner": {
+      "type": "string",
+      "description": "Stable identifier for the learner. SHOULD be pseudonymous and per-scope (§3.2). REQUIRED.",
+      "minLength": 1
+    },
+    "updated": {
+      "description": "Date or datetime of last compilation. REQUIRED.",
+      "$ref": "#/$defs/dateOrDateTime"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Human-readable name of this document's scope. OPTIONAL."
+    },
+    "goals": {
+      "type": "array",
+      "description": "Learner-declared intents — the only learner-authored section (§3.5). OPTIONAL.",
+      "items": {
+        "$ref": "#/$defs/goal"
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "description": "One entry per concept the learner has meaningful state about (§3.3). REQUIRED.",
+      "items": {
+        "$ref": "#/$defs/concept"
+      }
+    },
+    "teaches_best": {
+      "type": "array",
+      "description": "Derived learning preferences — outcome-backed only, never self-reported styles (§3.6). OPTIONAL.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next": {
+      "$ref": "#/$defs/next",
+      "description": "The frontier: pre-computed recommendations (§3.7). OPTIONAL."
+    }
+  },
+  "$defs": {
+    "dateOrDateTime": {
+      "type": "string",
+      "anyOf": [
+        {
+          "format": "date"
+        },
+        {
+          "format": "date-time"
+        }
+      ],
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}"
+    },
+    "claimItem": {
+      "description": "A capability/gap/misconception item: a bare sentence (Core) or an object with text and optional evidence links (Provenance, §4.1). Consumers MUST treat the string form as equivalent to an object with only `text`.",
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "evidence": {
+              "type": "array",
+              "description": "xAPI statement IDs or internal log URIs backing this claim.",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "concept": {
+      "type": "object",
+      "required": [
+        "name",
+        "mastery",
+        "confidence",
+        "last_seen",
+        "can",
+        "cannot_yet",
+        "misconceptions"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Human-readable concept name. REQUIRED.",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "description": "Concept IRI, minted on the issuer's own domain or drawn from an external framework (CASE, CTDL). OPTIONAL but recommended. Unresolvable IRIs degrade to opaque stable keys. The pattern only enforces a leading URI scheme; issuers are trusted to mint sensible HTTP(S) IRIs.",
+          "format": "iri",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:"
+        },
+        "mastery": {
+          "type": "number",
+          "description": "0.0–1.0 estimate of current ability to use the concept. An anchor for the bands in §3.4, not a precise measurement; not cross-platform comparable at Core level. REQUIRED.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "description": "How much to trust `mastery`. REQUIRED.",
+          "enum": [
+            "low",
+            "med",
+            "high"
+          ]
+        },
+        "last_seen": {
+          "description": "Date of most recent supporting evidence. Freshness is load-bearing (§9.4). REQUIRED.",
+          "$ref": "#/$defs/dateOrDateTime"
+        },
+        "trend": {
+          "description": "Direction of the estimate over the recent evidence window. OPTIONAL.",
+          "enum": [
+            "rising",
+            "stable",
+            "falling"
+          ]
+        },
+        "can": {
+          "type": "array",
+          "description": "Demonstrated capabilities — evidence-backed, never aspirations or self-reports (§3.3, §9.3). REQUIRED; may be empty.",
+          "items": {
+            "$ref": "#/$defs/claimItem"
+          }
+        },
+        "cannot_yet": {
+          "type": "array",
+          "description": "Observed gaps — attempted and failed, or assessed as absent. Not merely untried (§3.3, §9.1). REQUIRED; may be empty.",
+          "items": {
+            "$ref": "#/$defs/claimItem"
+          }
+        },
+        "misconceptions": {
+          "type": "array",
+          "description": "Active false beliefs, stated as the belief ('Believes X'). REQUIRED; may be empty.",
+          "items": {
+            "$ref": "#/$defs/claimItem"
+          }
+        }
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": [
+        "objective"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "description": "Concept or subject id this goal aims at. OPTIONAL."
+        },
+        "by": {
+          "$ref": "#/$defs/dateOrDateTime"
+        }
+      }
+    },
+    "next": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "learn": {
+          "type": "array",
+          "description": "Concepts whose prerequisites are met, not yet started.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "review": {
+          "type": "array",
+          "description": "Known concepts predicted to have decayed.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "blocked": {
+          "type": "object",
+          "description": "Desired concepts with missing prerequisites, mapped to the reason.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

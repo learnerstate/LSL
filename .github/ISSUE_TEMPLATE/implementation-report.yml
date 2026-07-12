@@ -1,0 +1,64 @@
+name: Implementation report
+description: You built something that emits or consumes LSL. Tell us — this is how the spec finds its soft spots.
+title: "[impl] "
+labels: ["implementation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Whether it's a weekend script or a production exporter, implementation reports are the most valuable feedback a draft spec can get. Rough edges you hit are spec bugs — report them here or as separate spec-feedback issues.
+
+  - type: input
+    id: what
+    attributes:
+      label: What did you build?
+      placeholder: "An xAPI→LSL compiler for our LMS / an AI tutor that consumes LSL / a validator"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: role
+    attributes:
+      label: Producer or consumer?
+      options:
+        - Produces LSL (compiler / exporter)
+        - Consumes LSL (tutor / recommender / agent)
+        - Both
+        - Tooling (validator, renderer, library)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: layers
+    attributes:
+      label: Layers implemented
+      options:
+        - label: Core
+        - label: Provenance
+        - label: Relationships
+        - label: Federation
+        - label: prompt format (§8)
+
+  - type: textarea
+    id: friction
+    attributes:
+      label: What was unclear, awkward, or surprising?
+      description: The honest list. "Nothing" is suspicious for a draft spec.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verdict
+    attributes:
+      label: Did it work?
+      description: For producers — did your data map cleanly (which D/A/S fields did you ship)? For consumers — did the document actually improve first-session behavior?
+    validations:
+      required: false
+
+  - type: input
+    id: link
+    attributes:
+      label: Link (optional)
+      description: Repo, demo, or writeup, if public. We maintain a list of known implementations.
+    validations:
+      required: false

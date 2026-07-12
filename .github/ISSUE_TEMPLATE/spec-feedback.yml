@@ -1,0 +1,55 @@
+name: Spec feedback / disagreement
+description: Something in the spec is wrong, unclear, or you'd design it differently. This is the issue type we most want.
+title: "[spec] "
+labels: ["spec-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reading closely enough to disagree. One issue per disagreement, please — focused issues get resolved; omnibus issues get stale.
+
+  - type: input
+    id: section
+    attributes:
+      label: Spec section
+      description: Which section of SPEC.md this concerns (e.g. §3.4, §9.2, or "the prompt format").
+      placeholder: "§3.4 Mastery scale"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of issue
+      options:
+        - Wrong — the spec's position is mistaken
+        - Unclear — I couldn't tell what's normative
+        - Missing — a case the spec doesn't cover
+        - Design disagreement — valid, but I'd do it differently
+        - Editorial — typo, wording, formatting
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem?
+      description: Quote the specific text where possible. If you hit this while implementing, say so — implementer-reported issues get priority.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Proposed alternative
+      description: What should the spec say instead? A sketch is fine; "delete it" is a valid answer. Optional but strongly encouraged — critiques with alternatives move faster.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Your vantage point (optional)
+      description: e.g. "I maintain an xAPI LRS", "I build an AI tutor", "psychometrician". Helps us weigh domain-specific feedback correctly.
+    validations:
+      required: false
