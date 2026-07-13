@@ -1,15 +1,8 @@
-The `prompt` format: the document in examples/full-core-provenance.yml, rendered
-via `?format=prompt&budget=800`. ~140 tokens, ready to drop into an LLM's context.
-Section order and truncation rules are normative — see SPEC.md §8. Misconceptions
-are never dropped while any budget remains after the identity line.
-
---------------------------------------------------------------------------------
 LEARNER: lrn-8x2ka · DSA · updated 2026-07-08
 GOAL: interview-ready by 2026-09-01
-⚠ MISCONCEPTION: believes memoization always yields O(n) time — probe & correct first
+MISCONCEPTION: believes memoization always yields O(n) time — probe & correct first
 CANNOT YET: space tradeoffs memo vs tabulation · LL empty/single-node edge cases
 NEXT: learn DP Tabulation | review Linked Lists | blocked: DP on Graphs (needs Tabulation)
 MASTERY: recursion 0.85 high · linked-lists 0.74 high (stale 10d) · memoization 0.68↑med
 CAN: novel recursive design w/ base cases · top-down memo solutions · LL insert/delete
 TEACHES BEST: worked examples first · <35 min sessions
---------------------------------------------------------------------------------
