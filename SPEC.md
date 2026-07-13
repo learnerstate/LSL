@@ -543,7 +543,7 @@ None of these are competitors. LSL fills a gap the rest were never built to cove
 
 ---
 
-*End of specification draft. See [CHANGELOG.md](./CHANGELOG.md) for revision history. Feedback, reference-compiler collaboration, and critical review are all welcome, especially from xAPI profile authors and psychometricians.*
+*End of specification draft. See [CHANGELOG.md](https://github.com/learnerstate/LSL/blob/main/CHANGELOG.md) for revision history. Feedback, reference-compiler collaboration, and critical review are all welcome, especially from xAPI profile authors and psychometricians.*
 
  
 *Drafting note: this document was formatted with LLM assistance. The design decisions and normative rules are the maintainers', who reviewed the full text; report anything that reads wrong via an issue, same as any other bug.*
