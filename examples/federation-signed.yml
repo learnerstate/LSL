@@ -10,7 +10,7 @@
 
 lsl: "1.0"
 learner: "lrn-8x2ka"
-updated: 2026-07-10
+updated: "2026-07-10"
 subject: "Data Structures & Algorithms"
 
 document_type: canonical
@@ -31,14 +31,14 @@ proof:
 
 goals:
   - objective: "Interview-ready in DSA"
-    by: 2026-09-01
+    by: "2026-09-01"
 
 concepts:
   - name: "Recursion"
     id: "https://leetcode.com/concepts/cs/dsa/recursion"
     mastery: 0.82            # pooled estimate across origins
     confidence: high
-    last_seen: 2026-07-01
+    last_seen: "2026-07-01"
     can:
       - "Designs recursive solutions with correct base cases for novel problems"
     cannot_yet: []
@@ -55,7 +55,7 @@ concepts:
     id: "https://leetcode.com/concepts/cs/dsa/memoization"
     mastery: 0.68
     confidence: med
-    last_seen: 2026-07-08
+    last_seen: "2026-07-08"
     can:
       - "Writes a correct top-down memoized solution for standard problems"
     cannot_yet:

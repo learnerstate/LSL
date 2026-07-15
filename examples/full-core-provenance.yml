@@ -5,21 +5,21 @@
 
 lsl: "1.0"
 learner: "lrn-8x2ka"
-updated: 2026-07-08
+updated: "2026-07-08"
 subject: "Data Structures & Algorithms"
 compiled_by: { name: "leetcode-lsl-exporter", version: "1.2.0" }
 sources: ["https://lrs.leetcode.com/xapi/"]
 
 goals:
   - objective: "Interview-ready in DSA"
-    by: 2026-09-01
+    by: "2026-09-01"
 
 concepts:
   - name: "Recursion"
     id: "https://leetcode.com/concepts/cs/dsa/recursion"
     mastery: 0.85
     confidence: high
-    last_seen: 2026-05-30
+    last_seen: "2026-05-30"
     trend: stable
     can:
       - "Designs recursive solutions with correct base cases for novel problems"
@@ -30,7 +30,7 @@ concepts:
     id: "https://leetcode.com/concepts/cs/dsa/linked-lists"
     mastery: 0.74
     confidence: high
-    last_seen: 2026-06-28
+    last_seen: "2026-06-28"
     trend: stable
     can:
       - "Explains node/pointer structure and traverses correctly"
@@ -43,7 +43,7 @@ concepts:
     id: "https://leetcode.com/concepts/cs/dsa/memoization"
     mastery: 0.68
     confidence: med
-    last_seen: 2026-07-08
+    last_seen: "2026-07-08"
     trend: rising
     can:
       - "Writes a correct top-down memoized solution for standard problems"
