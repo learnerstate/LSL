@@ -121,7 +121,6 @@
         "id": {
           "type": "string",
           "description": "Concept IRI, minted on the issuer's own domain or drawn from an external framework (CASE, CTDL). OPTIONAL but recommended. Unresolvable IRIs degrade to opaque stable keys. The pattern only enforces a leading URI scheme; issuers are trusted to mint sensible HTTP(S) IRIs.",
-          "format": "iri",
           "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:"
         },
         "mastery": {
