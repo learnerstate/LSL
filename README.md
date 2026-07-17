@@ -2,7 +2,7 @@
 
 LSL (Learner State Layer) is a small, open file format that describes what a person currently knows. It's written so a human can read it and an AI can act on it.
 
-This page covers what it is, why it exists, and how to use it. The full technical spec lives in [SPEC.md](./SPEC.md).
+This page covers what it is, why it exists, and how to use it. The full technical spec lives in [SPEC.md](https://github.com/learnerstate/LSL/blob/main/SPEC.md).
 
 ---
 
@@ -99,4 +99,4 @@ And if you're the learner, LSL is what makes "my AI already knows what I know" p
 
 LSL is a public draft (v1.0). The spec, examples, and a JSON Schema live in this repository. Feedback, implementations, and critical review are all welcome, especially from xAPI profile authors and psychometricians, who will spot the weak points fastest.
 
-Start with [SPEC.md](./SPEC.md). Open an issue if you disagree with something. Build a compiler for your platform and tell us about it. No one owns this format, so the sooner disagreements surface, the better it gets.
+Start with [SPEC.md](https://github.com/learnerstate/LSL/blob/main/SPEC.md). Open an issue if you disagree with something. Build a compiler for your platform and tell us about it. No one owns this format, so the sooner disagreements surface, the better it gets.

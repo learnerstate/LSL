@@ -1,13 +1,13 @@
 # Schema
 
 `lsl-core.schema.json` is the JSON Schema (2020-12) for the Core layer
-defined in [SPEC.md §3](../SPEC.md#3-schema-specification--core): `lsl`,
+defined in [SPEC.md §3](https://github.com/learnerstate/LSL/blob/main/SPEC.md#3-schema-specification--core): `lsl`,
 `learner`, `updated`, `subject`, `goals`, `concepts[]`, `teaches_best`,
 `next`.
 
 It intentionally allows unknown/additional properties, since a document
 using the Provenance, Relationships, or Federation extensions ([SPEC.md
-§4](../SPEC.md#4-schema-specification--extensions)) is still a valid Core
+§4](https://github.com/learnerstate/LSL/blob/main/SPEC.md#4-schema-specification--extensions)) is still a valid Core
 document — extensions are strictly additive. This schema does not validate
 extension field shapes; check those against SPEC.md §4 by hand.
 
